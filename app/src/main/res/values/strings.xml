@@ -2,6 +2,7 @@
     <string name="app_name">FinalProjectAndroid2023</string>
 
     <string name="shop_button_text">Shop</string>
+    <string name="sell_button_text">Sell</string>
 
 
 </resources>
