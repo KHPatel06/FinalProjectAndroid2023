@@ -17,7 +17,11 @@
     <fragment
         android:id="@+id/sellFragment"
         android:name="com.example.finalprojectandroid2023.SellFragment"
-        android:label="SellFragment" />
+        android:label="SellFragment" >
+        <action
+            android:id="@+id/action_sellFragment_self"
+            app:destination="@id/sellFragment" />
+    </fragment>
     <fragment
         android:id="@+id/mainFragment"
         android:name="com.example.finalprojectandroid2023.MainFragment"

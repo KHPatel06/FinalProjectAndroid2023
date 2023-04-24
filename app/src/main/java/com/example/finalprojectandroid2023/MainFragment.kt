@@ -5,6 +5,8 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.findNavController
+import com.example.finalprojectandroid2023.databinding.FragmentMainBinding
 import com.example.finalprojectandroid2023.databinding.FragmentShopBinding
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.ktx.Firebase
@@ -26,6 +28,11 @@ class MainFragment : Fragment() {
 
         dbRef = Firebase.database.reference
 
+
+        binding.sellButton.setOnClickListener{
+            val action = MainFragmentDirections.actionMainFragmentToShopFragment()
+            rootView.findNavController().navigate(action)
+        }
 
         return rootView
     }

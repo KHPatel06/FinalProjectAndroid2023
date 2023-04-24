@@ -3,6 +3,8 @@
 
     <string name="shop_button_text">Shop</string>
     <string name="sell_button_text">Sell</string>
+    <string name="buy_button_text">Buy</string>
+    <string name="back_button_text">back</string>
 
 
 </resources>
