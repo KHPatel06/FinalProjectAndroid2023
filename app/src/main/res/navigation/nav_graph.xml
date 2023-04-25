@@ -4,7 +4,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
     app:startDestination="@id/mainFragment">
-
+    <fragment
+        android:id="@+id/mainFragment"
+        android:name="com.example.finalprojectandroid2023.MainFragment"
+        android:label="fragment_main"
+        tools:layout="@layout/fragment_main" >
+        <action
+            android:id="@+id/action_mainFragment_to_shopFragment"
+            app:destination="@id/shopFragment" />
+    </fragment>
     <fragment
         android:id="@+id/shopFragment"
         android:name="com.example.finalprojectandroid2023.ShopFragment"
@@ -17,18 +25,6 @@
     <fragment
         android:id="@+id/sellFragment"
         android:name="com.example.finalprojectandroid2023.SellFragment"
-        android:label="SellFragment" >
-        <action
-            android:id="@+id/action_sellFragment_self"
-            app:destination="@id/sellFragment" />
-    </fragment>
-    <fragment
-        android:id="@+id/mainFragment"
-        android:name="com.example.finalprojectandroid2023.MainFragment"
-        android:label="fragment_main"
-        tools:layout="@layout/fragment_main" >
-        <action
-            android:id="@+id/action_mainFragment_to_shopFragment"
-            app:destination="@id/shopFragment" />
-    </fragment>
+        android:label="fragment_sell"
+        tools:layout="@layout/fragment_sell" />
 </navigation>

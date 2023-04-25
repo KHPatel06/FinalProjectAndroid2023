@@ -50,5 +50,12 @@ dependencies {
     implementation 'androidx.navigation:navigation-ui-ktx:2.5.3'
     implementation platform('com.google.firebase:firebase-bom:31.3.0')
     implementation 'com.google.firebase:firebase-database-ktx'
+    implementation "androidx.fragment:fragment-ktx:1.5.5"
     implementation "androidx.recyclerview:recyclerview:1.2.1"
+    implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.5.1'
+    implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.3.0'
+    implementation "com.squareup.retrofit2:retrofit:2.9.0"
+    implementation "com.squareup.moshi:moshi-kotlin:1.11.0"
+    implementation "com.squareup.retrofit2:converter-moshi:2.9.0"
+
 }

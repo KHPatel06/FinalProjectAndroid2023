@@ -5,7 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#A0DCFF"
-    tools:context=".MainFragment">
+    tools:context=".MainFragment"
+    android:id="@+id/main_fragment">
 
     <ImageButton
         android:id="@+id/clicky_thing"
@@ -15,7 +16,8 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        tools:layout="@layout/fragment_main"/>
 
     <TextView
         android:id="@+id/cash_count"

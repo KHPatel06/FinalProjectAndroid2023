@@ -1,6 +1,7 @@
 package com.example.finalprojectandroid2023
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -15,7 +16,7 @@ import com.google.firebase.database.ktx.database
 
 class MainFragment : Fragment() {
 
-    private var _binding: FragmentShopBinding? = null
+    private var _binding: FragmentMainBinding? = null
     private val binding get() = _binding!!
     lateinit var dbRef : DatabaseReference
 
@@ -23,16 +24,12 @@ class MainFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        _binding = FragmentShopBinding.inflate(inflater, container, false)
+        Log.i("MainFragment", "workie here")
+        _binding = FragmentMainBinding.inflate(inflater, container, false)
         val rootView = binding.root
 
         dbRef = Firebase.database.reference
 
-
-        binding.sellButton.setOnClickListener{
-            val action = MainFragmentDirections.actionMainFragmentToShopFragment()
-            rootView.findNavController().navigate(action)
-        }
 
         return rootView
     }

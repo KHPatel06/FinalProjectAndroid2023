@@ -1,10 +1,11 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main_fragment"
+    android:id="@+id/shop_fragment"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#A0DCFF">
+    android:background="#A0DCFF"
+    tools:context=".ShopFragment">
 
     <Button
         android:id="@+id/go_back"
