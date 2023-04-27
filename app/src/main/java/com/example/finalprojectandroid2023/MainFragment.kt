@@ -24,11 +24,15 @@ class MainFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        Log.i("MainFragment", "workie here")
         _binding = FragmentMainBinding.inflate(inflater, container, false)
         val rootView = binding.root
 
         dbRef = Firebase.database.reference
+
+        binding.shopButton.setOnClickListener{
+            val action = MainFragmentDirections.actionMainFragmentToShopFragment()
+            rootView.findNavController().navigate(action)
+        }
 
 
         return rootView

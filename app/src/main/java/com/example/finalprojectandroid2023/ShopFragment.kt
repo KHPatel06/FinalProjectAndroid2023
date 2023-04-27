@@ -23,7 +23,7 @@ class ShopFragment : Fragment() {
         _binding = FragmentShopBinding.inflate(inflater, container, false)
         val rootView = binding.root
 
-            Log.i("ShopFragment", "Kill youserld")
+            Log.i("ShopFragment", "I hate you")
         return rootView
     }
 }
