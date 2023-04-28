@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.activityViewModels
 import androidx.navigation.findNavController
 import com.example.finalprojectandroid2023.databinding.FragmentMainBinding
 import com.example.finalprojectandroid2023.databinding.FragmentShopBinding
@@ -19,6 +20,7 @@ class MainFragment : Fragment() {
     private var _binding: FragmentMainBinding? = null
     private val binding get() = _binding!!
     lateinit var dbRef : DatabaseReference
+    private val viewModel: ItemViewModel by activityViewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -34,6 +36,13 @@ class MainFragment : Fragment() {
             rootView.findNavController().navigate(action)
         }
 
+        binding.clickyThing.setOnClickListener {
+            viewModel.addKush()
+        }
+        viewModel.numOfKush.observe(viewLifecycleOwner) { currentKushAmount ->
+            binding.cashCount.text = currentKushAmount.toString()
+
+        }
 
         return rootView
     }
