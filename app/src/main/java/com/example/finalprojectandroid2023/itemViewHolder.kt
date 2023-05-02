@@ -11,5 +11,6 @@ class itemViewHolder(val binding: ListItemLayoutBinding) : RecyclerView.ViewHold
 
         binding.itemName.text = currentItem.itemName
         binding.quantityText.text = currentItem.quantity.toString()
+
     }
 }
