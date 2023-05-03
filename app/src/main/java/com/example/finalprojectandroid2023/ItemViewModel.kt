@@ -7,18 +7,18 @@ import androidx.lifecycle.ViewModel
 class ItemViewModel: ViewModel() {
 
     var items = listOf<Item>(
-        Item(0.05, 0, "item 1"),
-        Item(0.1, 0, "item 2"),
-        Item(0.15, 0, "item 3"),
-        Item(0.2, 0, "item 4"),
-        Item(0.25, 0, "item 5"),
-        Item(0.3, 0, "item 6"),
-        Item(0.35, 0, "item 7"),
-        Item(0.4, 0, "item 8"),
-        Item(0.45, 0, "item 9"),
-        Item(0.5, 0, "item 10"),
-        Item(0.55, 0, "item 11"),
-        Item(0.6, 0, "item 12"),
+        Item(0.05, 0, "item 1", "Does stuff"),
+        Item(0.1, 0, "item 2", "Does stuff"),
+        Item(0.15, 0, "item 3", "Does stuff"),
+        Item(0.2, 0, "item 4", "Does stuff"),
+        Item(0.25, 0, "item 5", "Does stuff"),
+        Item(0.3, 0, "item 6", "Does stuff"),
+        Item(0.35, 0, "item 7", "Does stuff"),
+        Item(0.4, 0, "item 8", "Does stuff"),
+        Item(0.45, 0, "item 9", "Does stuff"),
+        Item(0.5, 0, "item 10", "Does stuff"),
+        Item(0.55, 0, "item 11", "Does stuff"),
+        Item(0.6, 0, "item 12", "Does stuff"),
     )
 
     private val _numOfKush = MutableLiveData(0.0)
