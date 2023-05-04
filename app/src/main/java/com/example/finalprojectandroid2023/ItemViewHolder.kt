@@ -5,6 +5,7 @@ import com.example.finalprojectandroid2023.databinding.ListItemLayoutBinding
 
 class ItemViewHolder(val binding: ListItemLayoutBinding) : RecyclerView.ViewHolder(binding.root) {
     private lateinit var currentItem: Item
+    var currentMultiplier = 0.0
 
     fun bindItem(item: Item){
         currentItem = item
@@ -15,8 +16,10 @@ class ItemViewHolder(val binding: ListItemLayoutBinding) : RecyclerView.ViewHold
         binding.description.text = currentItem.desc
     }
 
-    init {
-
+    init{
+        binding.root.setOnClickListener{view ->
+            currentMultiplier = currentItem.kushMultiplier
+        }
     }
 
 }

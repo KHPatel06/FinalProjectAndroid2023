@@ -25,10 +25,6 @@ class ItemViewModel: ViewModel() {
     val numOfKush: LiveData<Double>
         get() = _numOfKush
 
-    private var _totalMultiplication = 0.0
-    val totalMultiplication: Double
-        get() = _totalMultiplication
-
     private val _index = MutableLiveData(0)
     val index:LiveData<Int>
         get() = _index
@@ -39,6 +35,8 @@ class ItemViewModel: ViewModel() {
     }
 
     fun calculateMultiplier(){
+
+
 
     }
 
