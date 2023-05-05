@@ -6,7 +6,7 @@ import androidx.lifecycle.ViewModel
 
 class ItemViewModel: ViewModel() {
 
-    var items = listOf<Item>(
+    var items = listOf(
         Item(0.05, 0, "item 1", "Does stuff"),
         Item(0.1, 0, "item 2", "Does stuff"),
         Item(0.15, 0, "item 3", "Does stuff"),

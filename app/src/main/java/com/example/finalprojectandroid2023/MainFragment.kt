@@ -41,7 +41,6 @@ class MainFragment : Fragment() {
         }
         viewModel.numOfKush.observe(viewLifecycleOwner) { currentKushAmount ->
             binding.cashCount.text = currentKushAmount.toString()
-
         }
 
         return rootView

@@ -9,7 +9,12 @@ import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.RecyclerView
 import com.example.finalprojectandroid2023.databinding.FragmentShopBinding
+import android.content.Context;
+import android.view.GestureDetector;
+import android.view.MotionEvent;
+
 
 
 class ShopFragment : Fragment() {
@@ -28,6 +33,9 @@ class ShopFragment : Fragment() {
         val adapter = ItemAdapter(viewModel.items)
         binding.recyclerView.adapter = adapter
 
+
+
         return rootView
     }
+
 }
