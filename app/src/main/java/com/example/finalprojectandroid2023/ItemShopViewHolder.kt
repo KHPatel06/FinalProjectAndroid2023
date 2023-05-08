@@ -1,9 +1,10 @@
 package com.example.finalprojectandroid2023
 
+import android.view.View
 import androidx.recyclerview.widget.RecyclerView
 import com.example.finalprojectandroid2023.databinding.ListItemLayoutBinding
 
-class ItemShopViewHolder(val binding: ListItemLayoutBinding) : RecyclerView.ViewHolder(binding.root) {
+class ItemShopViewHolder(val binding: ListItemLayoutBinding) : RecyclerView.ViewHolder(binding.root), View.OnClickListener {
     private lateinit var currentItem: Item
     var currentMultiplier = 0.0
 
@@ -14,6 +15,14 @@ class ItemShopViewHolder(val binding: ListItemLayoutBinding) : RecyclerView.View
         binding.quantityText.text = currentItem.quantity.toString()
         binding.multiplicationAmount.text = "${(currentItem.kushMultiplier*100).toInt()}%"
         binding.description.text = currentItem.desc
+    }
+
+    fun ItemViewHolder(convertView: View){
+        TODO("I hate you")
+    }
+
+    override fun onClick(v: View?) {
+        TODO("Not yet implemented")
     }
 
 }
