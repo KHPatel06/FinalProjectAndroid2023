@@ -7,6 +7,8 @@ import com.example.finalprojectandroid2023.databinding.ListItemLayoutBinding
 
 class ItemAdapter(val itemList: List<Item>, itemListener: RecyclerViewClickListener) : RecyclerView.Adapter<ItemShopViewHolder>() {
 
+    val _itemListener: RecyclerViewClickListener = itemListener
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ItemShopViewHolder {
         val binding = ListItemLayoutBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return ItemShopViewHolder(binding)

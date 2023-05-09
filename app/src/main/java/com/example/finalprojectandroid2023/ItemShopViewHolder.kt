@@ -18,11 +18,13 @@ class ItemShopViewHolder(val binding: ListItemLayoutBinding) : RecyclerView.View
     }
 
     fun ItemViewHolder(convertView: View){
-        TODO("I hate you")
+
+        convertView.setOnClickListener(this)
+
     }
 
     override fun onClick(v: View?) {
-        TODO("Not yet implemented")
+
     }
 
 }
