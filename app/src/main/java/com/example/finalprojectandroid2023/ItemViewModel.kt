@@ -25,19 +25,17 @@ class ItemViewModel: ViewModel() {
     val numOfKush: LiveData<Double>
         get() = _numOfKush
 
-    private val _index = MutableLiveData(0)
-    val index:LiveData<Int>
-        get() = _index
+    private var _totalMultiplication = MutableLiveData(0.0)
+    val totalMultiplication: LiveData<Double>
+        get() = _totalMultiplication
 
     fun addKush(multiplier : Double){
         val currentKushCount = _numOfKush.value ?: 0.0
         _numOfKush.value = currentKushCount.plus(1 + (1 * multiplier))
     }
 
-    fun calculateMultiplier(){
-
-
-
+    fun calculateMultiplier(position: Int){
+        val currentMultiplication = _totalMultiplication.value ?: 0.0
+        _totalMultiplication.value = currentMultiplication.plus(items[position].kushMultiplier)
     }
-
 }

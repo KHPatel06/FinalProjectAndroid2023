@@ -37,11 +37,15 @@ class MainFragment : Fragment() {
         }
 
         binding.clickyThing.setOnClickListener {
-            viewModel.addKush(.000000000001)
+            viewModel.addKush(0.0)
         }
         viewModel.numOfKush.observe(viewLifecycleOwner) { currentKushAmount ->
             binding.cashCount.text = currentKushAmount.toString()
         }
+        viewModel.totalMultiplication.observe(viewLifecycleOwner){ currentMult ->
+            binding.totalMultiplier.text = (currentMult * 100).toString()
+        }
+
 
         return rootView
     }

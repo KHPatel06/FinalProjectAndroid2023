@@ -1,15 +1,17 @@
 package com.example.finalprojectandroid2023
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
+import androidx.recyclerview.widget.RecyclerView
 import com.example.finalprojectandroid2023.databinding.FragmentShopBinding
 
 
-class ShopFragment : Fragment(), RecyclerViewClickListener {
+class ShopFragment : Fragment() {
 
     private var _binding: FragmentShopBinding? = null
     private val binding get() = _binding!!
@@ -22,14 +24,22 @@ class ShopFragment : Fragment(), RecyclerViewClickListener {
         _binding = FragmentShopBinding.inflate(inflater, container, false)
         val rootView = binding.root
 
-//        val adapter = ItemAdapter(viewModel.items)
-//        binding.recyclerView.adapter = adapter
+        val adapter = ItemAdapter(viewModel.items)
+        binding.recyclerView.adapter = adapter
 
+        val recyclerView: RecyclerView = binding.recyclerView
+        recyclerView.addOnItemTouchListener(
+            RecyclerItemClickListener(
+                context,
+                recyclerView,
+                object : RecyclerItemClickListener.OnItemClickListener {
+                    override fun onItemClick(view: View?, position: Int) {
+                        viewModel.calculateMultiplier(position)
+                    }
 
+                    override fun onLongItemClick(view: View?, position: Int) {}
+                })
+        )
         return rootView
-    }
-
-    override fun recyclerViewListClicked(v: View?, position: Int) {
-
     }
 }

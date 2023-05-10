@@ -8,6 +8,20 @@
     tools:context=".MainFragment"
     android:id="@+id/main_fragment">
 
+    <TextView
+        android:id="@+id/total_multiplier"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="#4B8AAF"
+        android:padding="10dp"
+        android:textColor="#FFFFFF"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/clicky_thing"
+        tools:text="________%" />
+
     <ImageButton
         android:id="@+id/clicky_thing"
         android:layout_width="200dp"
