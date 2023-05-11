@@ -9,10 +9,13 @@ import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.findNavController
 import com.example.finalprojectandroid2023.databinding.FragmentMainBinding
-import com.example.finalprojectandroid2023.databinding.FragmentShopBinding
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.database.ktx.database
+import kotlin.math.roundToInt
+import java.math.BigDecimal
+import java.math.RoundingMode
+import kotlin.math.floor
 
 
 class MainFragment : Fragment() {
@@ -37,13 +40,13 @@ class MainFragment : Fragment() {
         }
 
         binding.clickyThing.setOnClickListener {
-            viewModel.addKush(0.0)
+            viewModel.addKush(viewModel.totalMultiplication.value!!)
         }
         viewModel.numOfKush.observe(viewLifecycleOwner) { currentKushAmount ->
-            binding.cashCount.text = currentKushAmount.toString()
+            binding.cashCount.text = "${floor(currentKushAmount * 100)/100}"
         }
         viewModel.totalMultiplication.observe(viewLifecycleOwner){ currentMult ->
-            binding.totalMultiplier.text = (currentMult * 100).toString()
+            binding.totalMultiplier.text = "${(currentMult * 100).roundToInt()}%"
         }
 
 

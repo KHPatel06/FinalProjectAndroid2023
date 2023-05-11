@@ -35,8 +35,8 @@ class ShopFragment : Fragment() {
                 object : RecyclerItemClickListener.OnItemClickListener {
                     override fun onItemClick(view: View?, position: Int) {
                         viewModel.calculateMultiplier(position)
+                        viewModel.buyItem(position)
                     }
-
                     override fun onLongItemClick(view: View?, position: Int) {}
                 })
         )
