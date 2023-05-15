@@ -1,11 +1,13 @@
 package com.example.finalprojectandroid2023
 
-import android.view.View
+import androidx.fragment.app.activityViewModels
 import androidx.recyclerview.widget.RecyclerView
 import com.example.finalprojectandroid2023.databinding.ListItemLayoutBinding
 
 class ItemShopViewHolder(val binding: ListItemLayoutBinding) : RecyclerView.ViewHolder(binding.root) {
     private lateinit var currentItem: Item
+//    private val viewModel: ItemViewModel by ()
+
 
     fun bindItem(item: Item) {
         currentItem = item
