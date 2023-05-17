@@ -43,7 +43,7 @@ class MainFragment : Fragment() {
             viewModel.addKush(viewModel.totalMultiplication.value!!)
         }
         viewModel.numOfKush.observe(viewLifecycleOwner) { currentKushAmount ->
-            binding.cashCount.text = "${floor(currentKushAmount * 100)/100}"
+            binding.cashCount.text = "$%.2f".format(currentKushAmount)
         }
         viewModel.totalMultiplication.observe(viewLifecycleOwner){ currentMult ->
             binding.totalMultiplier.text = "${(currentMult * 100).roundToInt()}%"
