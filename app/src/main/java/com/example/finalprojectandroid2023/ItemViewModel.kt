@@ -39,5 +39,6 @@ class ItemViewModel: ViewModel() {
             val currentMultiplication = _totalMultiplication.value ?: 0.0
             _totalMultiplication.value = currentMultiplication.plus(items[position].kushMultiplier)
             items[position].quantity++
+            items[position].price = items[position].price * 1.13
     }
 }

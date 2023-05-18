@@ -7,7 +7,7 @@
     android:background="#A0DCFF">
 
     <TextView
-        android:id="@+id/quantity_text_sell"
+        android:id="@+id/quantity_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -25,10 +25,10 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
         android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="@+id/quantity_text_sell"
+        app:layout_constraintBottom_toBottomOf="@+id/quantity_text"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/quantity_text_sell"
+        app:layout_constraintStart_toEndOf="@+id/quantity_text"
         app:layout_constraintTop_toTopOf="parent"
         tools:text="TextView" />
 
@@ -62,7 +62,7 @@
         app:layout_constraintTop_toBottomOf="@+id/description" />
 
     <TextView
-        android:id="@+id/item_name_sell"
+        android:id="@+id/price"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         tools:text="TextView"
