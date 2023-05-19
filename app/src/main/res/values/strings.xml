@@ -7,6 +7,8 @@
     <string name="back_button_text">back</string>
     <string name="shop_title">Shop</string>
     <string name="sell_title">Sell</string>
+    <string name="sell_title_dialog">How much do you want to sell?</string>
+    <string name="confirm_dialog">Confirm?</string>
 
 
 </resources>
