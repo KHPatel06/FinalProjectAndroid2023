@@ -2,9 +2,9 @@
 <resources>
 
     <style name= "seekbarColors">
-        <item name="android:progressBackgroundTint">@colors/backgroundSeekBarColor</item>
-        <item name="android:progressTint">@colors/progressSeekBarColor</item>
-        <item name="android:colorControlActivated">@colors/thumbSeekBarColor</item>
+        <item name="android:progressBackgroundTint">#0E73DF</item>
+        <item name="android:progressTint">#000000</item>
+        <item name="android:colorControlActivated">#074485</item>
     </style>
 
 </resources>
