@@ -39,13 +39,13 @@
         android:layout_height="wrap_content"
         android:text="______"
         android:textSize="20sp"
-        app:layout_constraintBottom_toTopOf="@+id/button"
+        app:layout_constraintBottom_toTopOf="@+id/confirm"
         app:layout_constraintEnd_toEndOf="@+id/quantitySeekbar"
         app:layout_constraintStart_toStartOf="@+id/quantitySeekbar"
         app:layout_constraintTop_toBottomOf="@+id/quantitySeekbar" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/confirm"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="60dp"

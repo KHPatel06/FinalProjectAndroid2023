@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.SeekBar
 import android.widget.TextView
 import androidx.fragment.app.Fragment
@@ -32,6 +33,8 @@ class SellFragment : Fragment() {
         val adapter = ItemSellAdapter(viewModel.items)
         binding.recyclerView.adapter = adapter
 
+        var seekBarProgress = 0
+
         val recyclerView: RecyclerView = binding.recyclerView
         recyclerView.addOnItemTouchListener(
             RecyclerItemClickListener(
@@ -51,11 +54,19 @@ class SellFragment : Fragment() {
                                 progress: Int,
                                 fromUser: Boolean
                             ) {
-                                layout.findViewById<TextView>(R.id.quantity_to_sell).text = progress.toString()
+                                seekBarProgress = progress + 1
+                                layout.findViewById<TextView>(R.id.quantity_to_sell).text = seekBarProgress.toString()
                             }
                             override fun onStartTrackingTouch(seekBar: SeekBar?) {}
                             override fun onStopTrackingTouch(seekBar: SeekBar?) {}
                         })
+
+                        layout.findViewById<Button>(R.id.confirm).setOnClickListener{
+                            if(viewModel.items[position].quantity >= seekBarProgress){
+                                viewModel.sellItem(position, seekBarProgress)
+                            }
+                        }
+
                     }
                     override fun onLongItemClick(view: View?, position: Int) {}
                 })

@@ -45,4 +45,11 @@ class ItemViewModel: ViewModel() {
             items[position].quantity++
             items[position].price = items[position].price * 1.13
     }
+
+    fun sellItem(position: Int, amountToSell: Int){
+        val unchangedPrice = items[position].price/1.13
+        _numOfKush.value = _numOfKush.value?.plus(unchangedPrice * amountToSell)
+        items[position].quantity -= amountToSell
+        items[position].price = unchangedPrice
+    }
 }
