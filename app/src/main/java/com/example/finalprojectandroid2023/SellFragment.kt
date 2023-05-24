@@ -7,10 +7,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.SeekBar
+import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.recyclerview.widget.RecyclerView
 import com.example.finalprojectandroid2023.databinding.FragmentShopBinding
+import org.w3c.dom.Text
 import java.util.*
 
 
@@ -38,27 +40,22 @@ class SellFragment : Fragment() {
                 object : RecyclerItemClickListener.OnItemClickListener {
                     override fun onItemClick(view: View?, position: Int) {
                         val dialog = Dialog(context!!)
-                        val inflater = requireActivity().layoutInflater
-                        val layout = inflater.inflate(R.layout.dialog_sell, binding.root)
+                        val inflater = layoutInflater
+                        val layout = inflater.inflate(R.layout.dialog_sell, container, false)
                         dialog.setContentView(layout)
                         dialog.show()
 
-                        val dialogSeekBar = layout.findViewById<SeekBar>(R.id.quantitySeekbar).setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener{
+                        layout.findViewById<SeekBar>(R.id.quantitySeekbar).setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener{
                             override fun onProgressChanged(
                                 seekBar: SeekBar?,
                                 progress: Int,
                                 fromUser: Boolean
                             ) {
-
+                                layout.findViewById<TextView>(R.id.quantity_to_sell).text = progress.toString()
                             }
-
                             override fun onStartTrackingTouch(seekBar: SeekBar?) {}
                             override fun onStopTrackingTouch(seekBar: SeekBar?) {}
-
                         })
-
-
-
                     }
                     override fun onLongItemClick(view: View?, position: Int) {}
                 })
