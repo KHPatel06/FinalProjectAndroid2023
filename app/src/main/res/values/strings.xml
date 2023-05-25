@@ -9,6 +9,10 @@
     <string name="sell_title">Sell</string>
     <string name="sell_title_dialog">How much do you want to sell?</string>
     <string name="confirm_dialog">Confirm?</string>
+    <string name="toast_sale_denied">You can\'t sell more than you have</string>
+    <string name="toast_sale_accepted">Sold</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 
 </resources>

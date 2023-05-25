@@ -22,7 +22,7 @@ class MainFragment : Fragment() {
 
     private var _binding: FragmentMainBinding? = null
     private val binding get() = _binding!!
-    lateinit var dbRef : DatabaseReference
+    lateinit var dbRef: DatabaseReference
     private val viewModel: ItemViewModel by activityViewModels()
 
     override fun onCreateView(
@@ -34,7 +34,7 @@ class MainFragment : Fragment() {
 
         dbRef = Firebase.database.reference
 
-        binding.shopButton.setOnClickListener{
+        binding.shopButton.setOnClickListener {
             val action = MainFragmentDirections.actionMainFragmentToShopFragment()
             rootView.findNavController().navigate(action)
         }
@@ -45,7 +45,7 @@ class MainFragment : Fragment() {
         viewModel.numOfKush.observe(viewLifecycleOwner) { currentKushAmount ->
             binding.cashCount.text = "$%.2f".format(currentKushAmount)
         }
-        viewModel.totalMultiplication.observe(viewLifecycleOwner){ currentMult ->
+        viewModel.totalMultiplication.observe(viewLifecycleOwner) { currentMult ->
             binding.totalMultiplier.text = "${(currentMult * 100).roundToInt()}%"
         }
 

@@ -51,5 +51,7 @@ class ItemViewModel: ViewModel() {
         _numOfKush.value = _numOfKush.value?.plus(unchangedPrice * amountToSell)
         items[position].quantity -= amountToSell
         items[position].price = unchangedPrice
+        val currentMultiplication = _totalMultiplication.value ?: 0.0
+        _totalMultiplication.value = currentMultiplication.minus(items[position].kushMultiplier)
     }
 }

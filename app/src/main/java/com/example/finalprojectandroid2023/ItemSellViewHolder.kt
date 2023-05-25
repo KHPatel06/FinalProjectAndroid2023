@@ -8,9 +8,7 @@ class ItemSellViewHolder(val binding: ListItemLayoutSellBinding): RecyclerView.V
 
     fun bindItem(item: Item) {
         currentItem = item
-
         binding.itemNameSell.text = currentItem.itemName
         binding.quantityTextSell.text = "x${currentItem.quantity}"
-
     }
 }
