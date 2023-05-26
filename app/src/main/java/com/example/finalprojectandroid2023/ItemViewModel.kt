@@ -29,10 +29,6 @@ class ItemViewModel: ViewModel() {
     val totalMultiplication: LiveData<Double>
         get() = _totalMultiplication
 
-    private var _quantityToSell = MutableLiveData(0)
-    val quantityToSell: LiveData<Int>
-        get() = _quantityToSell
-
     fun addKush(multiplier : Double){
         val currentKushCount = _numOfKush.value ?: 0.00
         _numOfKush.value = currentKushCount.plus(1 + (1 * multiplier))
@@ -52,6 +48,6 @@ class ItemViewModel: ViewModel() {
         items[position].quantity -= amountToSell
         items[position].price = unchangedPrice
         val currentMultiplication = _totalMultiplication.value ?: 0.0
-        _totalMultiplication.value = currentMultiplication.minus(items[position].kushMultiplier)
+        _totalMultiplication.value = currentMultiplication.minus((items[position].kushMultiplier) * amountToSell)
     }
 }

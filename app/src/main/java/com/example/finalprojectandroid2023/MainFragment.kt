@@ -2,12 +2,11 @@ package com.example.finalprojectandroid2023
 
 import android.os.Bundle
 import android.util.Log
+import android.view.*
 import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.findNavController
+import androidx.navigation.ui.NavigationUI
 import com.example.finalprojectandroid2023.databinding.FragmentMainBinding
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.ktx.Firebase
@@ -31,6 +30,7 @@ class MainFragment : Fragment() {
     ): View? {
         _binding = FragmentMainBinding.inflate(inflater, container, false)
         val rootView = binding.root
+        setHasOptionsMenu(true)
 
         dbRef = Firebase.database.reference
 
@@ -50,7 +50,17 @@ class MainFragment : Fragment() {
         }
 
 
+
         return rootView
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        super.onCreateOptionsMenu(menu, inflater)
+        inflater.inflate(R.menu.options_menu, menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return NavigationUI.onNavDestinationSelected(item, requireView().findNavController()) || super.onOptionsItemSelected(item)
     }
 
 }

@@ -1,7 +1,6 @@
 package com.example.finalprojectandroid2023
 
-import androidx.fragment.app.activityViewModels
-import androidx.lifecycle.ViewModel
+
 import androidx.recyclerview.widget.RecyclerView
 import com.example.finalprojectandroid2023.databinding.ListItemLayoutBinding
 

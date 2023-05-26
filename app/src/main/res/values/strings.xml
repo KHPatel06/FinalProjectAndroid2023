@@ -11,8 +11,7 @@
     <string name="confirm_dialog">Confirm?</string>
     <string name="toast_sale_denied">You can\'t sell more than you have</string>
     <string name="toast_sale_accepted">Sold</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="about_fragment_text">Hello blank fragment</string>
 
 
 </resources>

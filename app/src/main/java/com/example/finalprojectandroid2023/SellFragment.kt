@@ -75,8 +75,13 @@ class SellFragment : Fragment() {
                                 ).show()
                                 dialog.dismiss()
                             }
-                            Toast.makeText(activity, R.string.toast_sale_denied, Toast.LENGTH_SHORT)
-                                .show()
+                            else {
+                                Toast.makeText(
+                                    activity,
+                                    R.string.toast_sale_denied,
+                                    Toast.LENGTH_SHORT
+                                ).show()
+                            }
                         }
 
                     }
@@ -84,7 +89,6 @@ class SellFragment : Fragment() {
                     override fun onLongItemClick(view: View?, position: Int) {}
                 })
         )
-
         return rootView
     }
 
