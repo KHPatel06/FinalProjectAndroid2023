@@ -4,7 +4,7 @@ package com.example.finalprojectandroid2023
 import androidx.recyclerview.widget.RecyclerView
 import com.example.finalprojectandroid2023.databinding.ListItemLayoutBinding
 
-class ItemShopViewHolder(val binding: ListItemLayoutBinding) : RecyclerView.ViewHolder(binding.root) {
+class ItemShopViewHolder(val binding: ListItemLayoutBinding, val viewModel: ItemViewModel) : RecyclerView.ViewHolder(binding.root) {
     private lateinit var currentItem: Item
 
     fun bindItem(item: Item) {

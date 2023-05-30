@@ -85,7 +85,6 @@ class SellFragment : Fragment() {
                         }
 
                     }
-
                     override fun onLongItemClick(view: View?, position: Int) {}
                 })
         )

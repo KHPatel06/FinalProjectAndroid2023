@@ -28,7 +28,7 @@
         android:label="fragment_sell"
         tools:layout="@layout/fragment_sell" />
     <fragment
-        android:id="@+id/AboutFragment"
+        android:id="@+id/aboutFragment"
         android:name="com.example.finalprojectandroid2023.AboutFragment"
         android:label="fragment_about"
         tools:layout="@layout/fragment_about" />
