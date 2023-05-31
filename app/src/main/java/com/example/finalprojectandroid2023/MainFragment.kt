@@ -1,7 +1,6 @@
 package com.example.finalprojectandroid2023
 
 import android.os.Bundle
-import android.util.Log
 import android.view.*
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
@@ -12,9 +11,7 @@ import com.google.firebase.database.DatabaseReference
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.database.ktx.database
 import kotlin.math.roundToInt
-import java.math.BigDecimal
-import java.math.RoundingMode
-import kotlin.math.floor
+
 
 
 class MainFragment : Fragment() {
