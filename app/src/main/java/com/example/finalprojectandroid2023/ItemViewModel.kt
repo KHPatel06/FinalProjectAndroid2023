@@ -51,10 +51,14 @@ class ItemViewModel: ViewModel() {
     }
 
     fun sellItem(position: Int, amountToSell: Int){
-        _numOfKush.value = _numOfKush.value?.plus((items[position].price/1.13 * amountToSell) * amountToSell)
+        _numOfKush.value = _numOfKush.value?.plus(items[position].price/(1.13 * amountToSell))
         _quantity.value = _quantity.value?.minus(amountToSell)
-        items[position].price = items[position].price/(1.13 * amountToSell)
+        _price.value = items[position].price/(1.13 * amountToSell)
         val currentMultiplication = _totalMultiplication.value ?: 0.0
         _totalMultiplication.value = currentMultiplication.minus((items[position].kushMultiplier) * amountToSell)
+    }
+
+    fun priceSet(position: Int){
+        _price.value = items[position].price
     }
 }

@@ -20,7 +20,11 @@ class ItemShopViewHolder(val binding: ListItemLayoutBinding, val viewModel: Item
         }
         binding.multiplicationAmount.text = "${(currentItem.kushMultiplier * 100).toInt()}% increase"
         binding.description.text = currentItem.desc
-        binding.price.text =  "$%.2f".format(currentItem.price)
+        viewModel.price.observe(lifecycleOwner){ currentPrice ->
+            viewModel.priceSet(itemsPosition)
+            viewModel.items[itemsPosition].price = currentPrice
+            binding.price.text =  "$%.2f".format(currentItem.price)
+        }
     }
 
 }
