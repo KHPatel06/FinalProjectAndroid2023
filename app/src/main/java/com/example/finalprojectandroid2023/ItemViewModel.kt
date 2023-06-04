@@ -8,18 +8,18 @@ import kotlin.math.floor
 class ItemViewModel: ViewModel() {
 
     var items = listOf(
-        Item(0.5, 0, "item 1", "Does stuff", 100.0),
-        Item(1.0, 0, "item 2", "Does stuff", 1000.0),
-        Item(1.5, 0, "item 3", "Does stuff", 1100.0),
-        Item(2.0, 0, "item 4", "Does stuff", 2000.0),
-        Item(2.5, 0, "item 5", "Does stuff", 10000.0),
-        Item(3.0, 0, "item 6", "Does stuff", 15000.0),
-        Item(3.5, 0, "item 7", "Does stuff", 18000.0),
-        Item(4.0, 0, "item 8", "Does stuff", 20000.0),
-        Item(4.5, 0, "item 9", "Does stuff", 25000.0),
-        Item(5.0, 0, "item 10", "Does stuff",28000.0),
-        Item(5.5, 0, "item 11", "Does stuff", 31000.0),
-        Item(10.0, 0, "item 12", "Does stuff", 1000000.0),
+        Item(0.5, MutableLiveData(0), "item 1", "Does stuff", MutableLiveData(100.0)),
+        Item(1.0, MutableLiveData(0), "item 2", "Does stuff", MutableLiveData(1000.0)),
+        Item(1.5, MutableLiveData(0), "item 3", "Does stuff", MutableLiveData(1100.0)),
+        Item(2.0, MutableLiveData(0), "item 4", "Does stuff", MutableLiveData(2000.0)),
+        Item(2.5, MutableLiveData(0), "item 5", "Does stuff", MutableLiveData(10000.0)),
+        Item(3.0, MutableLiveData(0), "item 6", "Does stuff", MutableLiveData(15000.0)),
+        Item(3.5, MutableLiveData(0), "item 7", "Does stuff", MutableLiveData(18000.0)),
+        Item(4.0, MutableLiveData(0), "item 8", "Does stuff", MutableLiveData(20000.0)),
+        Item(4.5, MutableLiveData(0), "item 9", "Does stuff", MutableLiveData(25000.0)),
+        Item(5.0, MutableLiveData(0), "item 10", "Does stuff",MutableLiveData(28000.0)),
+        Item(5.5, MutableLiveData(0), "item 11", "Does stuff", MutableLiveData(31000.0)),
+        Item(10.0, MutableLiveData(0), "item 12", "Does stuff", MutableLiveData(1000000.0)),
     )
 
     private val _numOfKush = MutableLiveData(0.00)
@@ -30,35 +30,23 @@ class ItemViewModel: ViewModel() {
     val totalMultiplication: LiveData<Double>
         get() = _totalMultiplication
 
-    private val _quantity = MutableLiveData(0)
-    val quantity: LiveData<Int>
-        get() = _quantity
-
-    private val _price = MutableLiveData(0.0)
-    val price: LiveData<Double>
-        get() = _price
-
-    fun setPriceData(position: Int){
-        _price.value = items[position].price
-    }
-
     fun addKush(){
         val currentKushCount = _numOfKush.value ?: 0.00
         _numOfKush.value = currentKushCount.plus(1 + (1 * totalMultiplication.value!!))
     }
 
     fun buyItem(position: Int){
-            _numOfKush.value = _numOfKush.value?.minus(items[position].price)
-            val currentMultiplication = _totalMultiplication.value ?: 0.0
-            _totalMultiplication.value = currentMultiplication.plus(items[position].kushMultiplier)
-            _quantity.value = _quantity.value?.plus(1)
-            _price.value = items[position].price * 1.13
+        _numOfKush.value = _numOfKush.value?.minus(items[position].price.value ?: 0.0)
+        val currentMultiplication = _totalMultiplication.value ?: 0.0
+        _totalMultiplication.value = currentMultiplication.plus(items[position].kushMultiplier)
+        items[position].quantity.value = items[position].quantity.value?.plus(1)
+        items[position].price.value = items[position].price.value?.times(1.13)
     }
 
     fun sellItem(position: Int, amountToSell: Int){
-        _numOfKush.value = _numOfKush.value?.plus(items[position].price/(1.13 * amountToSell))
-        _quantity.value = _quantity.value?.minus(amountToSell)
-        _price.value = items[position].price/(1.13 * amountToSell)
+        _numOfKush.value = _numOfKush.value?.plus((items[position].price.value ?: 0.0) / (1.13 * amountToSell))
+        _numOfKush.value = _numOfKush.value?.plus(((items[position].price.value ?: 0.0) / 1.13 * amountToSell) * amountToSell)
+        items[position].price.value = (items[position].price.value ?: 0.0) / (1.13 * amountToSell)
         val currentMultiplication = _totalMultiplication.value ?: 0.0
         _totalMultiplication.value = currentMultiplication.minus((items[position].kushMultiplier) * amountToSell)
     }

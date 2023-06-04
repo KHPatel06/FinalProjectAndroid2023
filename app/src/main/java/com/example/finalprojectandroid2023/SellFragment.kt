@@ -31,7 +31,8 @@ class SellFragment : Fragment() {
         _binding = FragmentShopBinding.inflate(inflater, container, false)
         val rootView = binding.root
 
-        var adapter = ItemSellAdapter(viewModel.items, viewModel, viewLifecycleOwner, 0)
+        val adapter = ItemSellAdapter(viewModel.items, viewLifecycleOwner)
+        binding.recyclerView.adapter = adapter
 
         var seekBarProgress = 0
 
@@ -42,7 +43,6 @@ class SellFragment : Fragment() {
                 recyclerView,
                 object : RecyclerItemClickListener.OnItemClickListener {
                     override fun onItemClick(view: View?, position: Int) {
-                        adapter = ItemSellAdapter(viewModel.items, viewModel, viewLifecycleOwner, position)
                         val dialog = Dialog(context!!)
                         val inflater = layoutInflater
                         val layout = inflater.inflate(R.layout.dialog_sell, container, false)
@@ -66,7 +66,7 @@ class SellFragment : Fragment() {
                             })
 
                         layout.findViewById<Button>(R.id.confirm).setOnClickListener {
-                            if (viewModel.items[position].quantity >= seekBarProgress) {
+                            if ((viewModel.items[position].quantity.value ?: 0) >= seekBarProgress) {
                                 viewModel.sellItem(position, seekBarProgress)
                                 Toast.makeText(
                                     activity,
@@ -83,13 +83,11 @@ class SellFragment : Fragment() {
                                 ).show()
                             }
                         }
+
                     }
                     override fun onLongItemClick(view: View?, position: Int) {}
                 })
         )
-
-        binding.recyclerView.adapter = adapter
-
         return rootView
     }
 

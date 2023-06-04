@@ -24,7 +24,8 @@ class ShopFragment : Fragment() {
         _binding = FragmentShopBinding.inflate(inflater, container, false)
         val rootView = binding.root
 
-        var adapter = ItemShopAdapter(viewModel.items, viewModel, viewLifecycleOwner, 0)
+        val adapter = ItemShopAdapter(viewModel.items, viewLifecycleOwner)
+        binding.recyclerView.adapter = adapter
 
         val recyclerView: RecyclerView = binding.recyclerView
         recyclerView.addOnItemTouchListener(
@@ -33,17 +34,13 @@ class ShopFragment : Fragment() {
                 recyclerView,
                 object : RecyclerItemClickListener.OnItemClickListener {
                     override fun onItemClick(view: View?, position: Int) {
-                        if (viewModel.numOfKush.value!! >= viewModel.items[position].price) {
-                            adapter = ItemShopAdapter(viewModel.items, viewModel, viewLifecycleOwner, position)
+                        if ((viewModel.numOfKush.value ?: 0.0) >= (viewModel.items[position].price.value ?: 0.0)) {
                             viewModel.buyItem(position)
                         }
                     }
-
                     override fun onLongItemClick(view: View?, position: Int) {}
                 })
         )
-
-        binding.recyclerView.adapter = adapter
 
         binding.goToSell.setOnClickListener {
             val action = ShopFragmentDirections.actionShopFragmentToSellFragment()
