@@ -1,11 +1,9 @@
 package com.example.finalprojectandroid2023
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Adapter
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.findNavController
@@ -26,7 +24,7 @@ class ShopFragment : Fragment() {
         _binding = FragmentShopBinding.inflate(inflater, container, false)
         val rootView = binding.root
 
-        var adapter = ItemAdapter(viewModel.items, viewModel, viewLifecycleOwner, 0)
+        var adapter = ItemShopAdapter(viewModel.items, viewModel, viewLifecycleOwner, 0)
 
         val recyclerView: RecyclerView = binding.recyclerView
         recyclerView.addOnItemTouchListener(
@@ -36,8 +34,8 @@ class ShopFragment : Fragment() {
                 object : RecyclerItemClickListener.OnItemClickListener {
                     override fun onItemClick(view: View?, position: Int) {
                         if (viewModel.numOfKush.value!! >= viewModel.items[position].price) {
+                            adapter = ItemShopAdapter(viewModel.items, viewModel, viewLifecycleOwner, position)
                             viewModel.buyItem(position)
-                            adapter = ItemAdapter(viewModel.items, viewModel, viewLifecycleOwner, position)
                         }
                     }
 

@@ -37,7 +37,7 @@ class MainFragment : Fragment() {
         }
 
         binding.clickyThing.setOnClickListener {
-            viewModel.addKush(viewModel.totalMultiplication.value!!)
+            viewModel.addKush()
         }
         viewModel.numOfKush.observe(viewLifecycleOwner) { currentKushAmount ->
             binding.cashCount.text = "$%.2f".format(currentKushAmount)

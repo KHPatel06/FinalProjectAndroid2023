@@ -15,13 +15,14 @@ class ItemShopViewHolder(val binding: ListItemLayoutBinding, val viewModel: Item
 
         binding.itemName.text = currentItem.itemName
         viewModel.quantity.observe(lifecycleOwner){ currentQuantity ->
+
             viewModel.items[itemsPosition].quantity = currentQuantity
             binding.quantityText.text = "x${currentItem.quantity}"
         }
         binding.multiplicationAmount.text = "${(currentItem.kushMultiplier * 100).toInt()}% increase"
         binding.description.text = currentItem.desc
+        viewModel.setPriceData(itemsPosition)
         viewModel.price.observe(lifecycleOwner){ currentPrice ->
-            viewModel.priceSet(itemsPosition)
             viewModel.items[itemsPosition].price = currentPrice
             binding.price.text =  "$%.2f".format(currentItem.price)
         }
