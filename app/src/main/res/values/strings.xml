@@ -12,6 +12,7 @@
     <string name="toast_sale_denied">You can\'t sell more than you have</string>
     <string name="toast_sale_accepted">Sold</string>
     <string name="about_fragment_text">Hello blank fragment</string>
+    <string name="save_button">Save</string>
 
 
 </resources>

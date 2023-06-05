@@ -4,6 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import kotlin.math.floor
+import kotlin.time.Duration.Companion.seconds
 
 class ItemViewModel: ViewModel() {
 
