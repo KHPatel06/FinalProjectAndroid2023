@@ -64,14 +64,24 @@
 
     <ImageButton
         android:id="@+id/save_button"
-        android:layout_width="100dp"
-        android:layout_height="wrap_content"
+        android:layout_width="75dp"
+        android:layout_height="75dp"
         android:backgroundTint="#A0DCFF"
         android:scaleType="centerCrop"
         android:src="@drawable/baseline_save_24"
         app:layout_constraintBottom_toBottomOf="@+id/total_multiplier"
         app:layout_constraintEnd_toEndOf="@+id/shop_button"
-        app:layout_constraintStart_toStartOf="@+id/shop_button"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/total_multiplier" />
+
+    <ImageButton
+        android:id="@+id/reset_save_button"
+        android:layout_width="75dp"
+        android:layout_height="75dp"
+        android:backgroundTint="#A0DCFF"
+        android:src="@drawable/baseline_restart_alt_24"
+        app:layout_constraintBottom_toTopOf="@+id/save_button"
+        app:layout_constraintEnd_toEndOf="@+id/save_button"
+        app:layout_constraintStart_toStartOf="@+id/save_button" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

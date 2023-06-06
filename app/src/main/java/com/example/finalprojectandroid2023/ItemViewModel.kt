@@ -9,9 +9,9 @@ import kotlin.time.Duration.Companion.seconds
 class ItemViewModel: ViewModel() {
 
     var items = listOf(
-        Item(0.5, MutableLiveData(0), "item 1", "Does stuff", MutableLiveData(100.0)),
-        Item(1.0, MutableLiveData(0), "item 2", "Does stuff", MutableLiveData(1000.0)),
-        Item(1.5, MutableLiveData(0), "item 3", "Does stuff", MutableLiveData(1100.0)),
+        Item(0.5, MutableLiveData(0), "Cookie", "Eating it makes you feel like clicking more Kush's", MutableLiveData(100.0)),
+        Item(1.0, MutableLiveData(0), "Ghost Energy", "You feel energized, You should click more Kush's", MutableLiveData(1000.0)),
+        Item(1.5, MutableLiveData(0), "sdgd", "Does stuff", MutableLiveData(1100.0)),
         Item(2.0, MutableLiveData(0), "item 4", "Does stuff", MutableLiveData(2000.0)),
         Item(2.5, MutableLiveData(0), "item 5", "Does stuff", MutableLiveData(10000.0)),
         Item(3.0, MutableLiveData(0), "item 6", "Does stuff", MutableLiveData(15000.0)),

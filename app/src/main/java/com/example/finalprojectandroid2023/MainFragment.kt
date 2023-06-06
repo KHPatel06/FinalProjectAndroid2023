@@ -5,6 +5,7 @@ import android.util.Log
 import android.view.*
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
+import androidx.lifecycle.MutableLiveData
 import androidx.navigation.findNavController
 import androidx.navigation.ui.NavigationUI
 import com.example.finalprojectandroid2023.databinding.FragmentMainBinding
@@ -14,7 +15,6 @@ import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.ValueEventListener
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
-import java.util.*
 import kotlin.math.roundToInt
 
 class MainFragment : Fragment() {
@@ -23,6 +23,7 @@ class MainFragment : Fragment() {
     private val binding get() = _binding!!
     lateinit var dbRef: DatabaseReference
     private val viewModel: ItemViewModel by activityViewModels()
+    var check = true
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -41,30 +42,40 @@ class MainFragment : Fragment() {
 
         binding.clickyThing.setOnClickListener { viewModel.addKush() }
 
-        var currentTime = Calendar.getInstance().time
         binding.saveButton.setOnClickListener{
             val totalMultiplication = viewModel.totalMultiplication.value ?: 0.0
             val kushCount = viewModel.numOfKush.value ?: 0.0
             val itemList = viewModel.items
 
-            val dbEntry = dbEntry(totalMultiplication, kushCount, itemList)
+            val dbEntry = DBEntry(totalMultiplication, kushCount, itemList)
 
-            dbRef.child("$currentTime").push().setValue(dbEntry)
-            currentTime = Calendar.getInstance().time
+            dbRef.child("saveStatePath").removeValue()
+            dbRef.child("saveStatePath").push().setValue(dbEntry)
         }
 
+        binding.resetSaveButton.setOnClickListener{
+            val items = listOf(
+                Item(0.5, MutableLiveData(0), "item 1", "Does stuff", MutableLiveData(100.0)),
+                Item(1.0, MutableLiveData(0), "item 2", "Does stuff", MutableLiveData(1000.0)),
+                Item(1.5, MutableLiveData(0), "item 3", "Does stuff", MutableLiveData(1100.0)),
+                Item(2.0, MutableLiveData(0), "item 4", "Does stuff", MutableLiveData(2000.0)),
+                Item(2.5, MutableLiveData(0), "item 5", "Does stuff", MutableLiveData(10000.0)),
+                Item(3.0, MutableLiveData(0), "item 6", "Does stuff", MutableLiveData(15000.0)),
+                Item(3.5, MutableLiveData(0), "item 7", "Does stuff", MutableLiveData(18000.0)),
+                Item(4.0, MutableLiveData(0), "item 8", "Does stuff", MutableLiveData(20000.0)),
+                Item(4.5, MutableLiveData(0), "item 9", "Does stuff", MutableLiveData(25000.0)),
+                Item(5.0, MutableLiveData(0), "item 10", "Does stuff", MutableLiveData(28000.0)),
+                Item(5.5, MutableLiveData(0), "item 11", "Does stuff", MutableLiveData(31000.0)),
+                Item(10.0, MutableLiveData(0), "item 12", "Does stuff", MutableLiveData(1000000.0)),
+            )
 
+            val dbEntry = DBEntry(0.0, 0.0, items)
 
-        viewModel.numOfKush.observe(viewLifecycleOwner) { currentKushAmount ->
-            binding.cashCount.text = "$%.2f".format(currentKushAmount)
+            dbRef.child("saveStatePath").removeValue()
+            dbRef.child("saveStatePath").push().setValue(dbEntry)
         }
 
-        viewModel.totalMultiplication.observe(viewLifecycleOwner) { currentMult ->
-            binding.totalMultiplier.text = "${(currentMult * 100).roundToInt()}%"
-        }
-
-
-        dbRef.addListenerForSingleValueEvent(object : ValueEventListener {
+        val valueEventListener = object: ValueEventListener{
             override fun onDataChange(snapshot: DataSnapshot) {
                 val allDBEntries = snapshot.children
                 var dbIndex = 0
@@ -84,18 +95,39 @@ class MainFragment : Fragment() {
                             viewModel.updateMultAndCountAfterSave(multiplication, kushCount)
                             dbIndex++
                         }
+
+                        for(i in dbCount downTo dbIndex){
+
+                        }
                     }
                 }
-
             }
 
             override fun onCancelled(error: DatabaseError) {
                 Log.w("MainFragment", "Failed to read value.", error.toException())
             }
-        })
+
+        }
+
+        if(check) {
+            dbRef.addValueEventListener(valueEventListener)
+            check = false
+        }
+        else {
+            dbRef.removeEventListener(valueEventListener)
+        }
+
+        viewModel.numOfKush.observe(viewLifecycleOwner) { currentKushAmount ->
+            binding.cashCount.text = "$%.2f".format(currentKushAmount)
+        }
+
+        viewModel.totalMultiplication.observe(viewLifecycleOwner) { currentMult ->
+            binding.totalMultiplier.text = "${(currentMult * 100).roundToInt()}%"
+        }
 
         return rootView
     }
+
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         super.onCreateOptionsMenu(menu, inflater)
@@ -110,4 +142,4 @@ class MainFragment : Fragment() {
     }
 
 }
-class dbEntry(var totalMultiplication: Double = 0.0, var kushCount: Double = 0.0, var itemList: List<Item> = listOf())
+class DBEntry(var totalMultiplication: Double = 0.0, var kushCount: Double = 0.0, var itemList: List<Item> = listOf())
