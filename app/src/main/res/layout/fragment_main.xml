@@ -12,14 +12,14 @@
         android:id="@+id/total_multiplier"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginEnd="32dp"
+        android:layout_marginBottom="32dp"
         android:background="#4B8AAF"
         android:padding="10dp"
         android:textColor="#FFFFFF"
         android:textSize="16sp"
-        app:layout_constraintBottom_toBottomOf="@+id/save_button"
-        app:layout_constraintEnd_toEndOf="@+id/cash_count"
-        app:layout_constraintStart_toStartOf="@+id/cash_count"
-        app:layout_constraintTop_toTopOf="@+id/save_button"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         tools:text="________%" />
 
     <ImageButton
@@ -62,16 +62,16 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <Button
+    <ImageButton
         android:id="@+id/save_button"
-        android:layout_width="wrap_content"
+        android:layout_width="100dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="32dp"
-        android:backgroundTint="#4B8AAF"
-        android:text="@string/save_button"
-        android:textSize="16sp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:backgroundTint="#A0DCFF"
+        android:scaleType="centerCrop"
+        android:src="@drawable/baseline_save_24"
+        app:layout_constraintBottom_toBottomOf="@+id/total_multiplier"
         app:layout_constraintEnd_toEndOf="@+id/shop_button"
-        app:layout_constraintStart_toStartOf="@+id/shop_button" />
+        app:layout_constraintStart_toStartOf="@+id/shop_button"
+        app:layout_constraintTop_toTopOf="@+id/total_multiplier" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

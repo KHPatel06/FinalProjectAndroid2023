@@ -55,4 +55,15 @@ class ItemViewModel: ViewModel() {
         val currentMultiplication = _totalMultiplication.value ?: 0.0
         _totalMultiplication.value = currentMultiplication.minus((items[position].kushMultiplier) * amountToSell)
     }
+
+    fun updateMultAndCountAfterSave(multiplication: Double, kushCount: Double){
+        _totalMultiplication.value = multiplication
+        _numOfKush.value = kushCount
+    }
+
+    fun updateQAndPAfterSave(itemQuantity: Int, itemPrice: Double, positionToChange: Int){
+        items[positionToChange].quantity.value = itemQuantity
+        items[positionToChange].price.value = itemPrice
+
+    }
 }
