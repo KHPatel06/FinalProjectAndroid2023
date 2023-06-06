@@ -1,5 +1,6 @@
 package com.example.finalprojectandroid2023
 
+import android.animation.ObjectAnimator
 import android.os.Bundle
 import android.util.Log
 import android.view.*
@@ -9,6 +10,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.navigation.findNavController
 import androidx.navigation.ui.NavigationUI
 import com.example.finalprojectandroid2023.databinding.FragmentMainBinding
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.DatabaseReference
@@ -24,6 +26,7 @@ class MainFragment : Fragment() {
     lateinit var dbRef: DatabaseReference
     private val viewModel: ItemViewModel by activityViewModels()
     var check = true
+    var checkIfClicked = false
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -40,7 +43,32 @@ class MainFragment : Fragment() {
             rootView.findNavController().navigate(action)
         }
 
-        binding.clickyThing.setOnClickListener { viewModel.addKush() }
+        binding.clickyThing.setOnClickListener {
+            if(!checkIfClicked) {
+                ObjectAnimator.ofFloat(binding.clickyThing, "scaleY", 1.2f).apply {
+                    duration = 100
+                    start()
+                }
+                ObjectAnimator.ofFloat(binding.clickyThing, "scaleX", 1.2f).apply {
+                    duration = 100
+                    start()
+                }
+                checkIfClicked = true
+            }
+            else{
+                ObjectAnimator.ofFloat(binding.clickyThing, "scaleY", 1.0f).apply {
+                    duration = 100
+                    start()
+                }
+                ObjectAnimator.ofFloat(binding.clickyThing, "scaleX", 1.0f).apply {
+                    duration = 100
+                    start()
+                }
+                checkIfClicked = false
+            }
+
+            viewModel.addKush()
+        }
 
         binding.saveButton.setOnClickListener{
             val totalMultiplication = viewModel.totalMultiplication.value ?: 0.0
@@ -65,14 +93,21 @@ class MainFragment : Fragment() {
                 Item(4.0, MutableLiveData(0), "Wizard", "He'll give you more Kush with his magic and whatnot", MutableLiveData(20000.0)),
                 Item(4.5, MutableLiveData(0), "Kush Inc", "A corporate machine that massively increases your Kush income", MutableLiveData(25000.0)),
                 Item(5.0, MutableLiveData(0), "Magic TI-84 plus ", "Does the math and gives you clicks once you press enter",MutableLiveData(28000.0)),
-                Item(5.5, MutableLiveData(0), "Time Machine", "Go back in time and get Kush's before they were even born", MutableLiveData(31000.0)),
-                Item(10.0, MutableLiveData(0), "Kush Empire", "Rule the world with the insane click power this gives you", MutableLiveData(1000000.0)),
+                Item(10.0, MutableLiveData(0), "Time Machine", "Go back in time and get Kush's before they were even born", MutableLiveData(31000.0)),
+                Item(1000.0, MutableLiveData(0), "Kush Empire ", "Rule the world with the insane click power this gives you", MutableLiveData(1000000.0)),
             )
 
             val dbEntry = DBEntry(0.0, 0.0, items)
 
-            dbRef.child("saveStatePath").removeValue()
-            dbRef.child("saveStatePath").push().setValue(dbEntry)
+            MaterialAlertDialogBuilder(requireContext())
+                .setTitle("Confirm Save Data Wipe?")
+                .setPositiveButton("Confirm") { dialog, which ->
+                    dbRef.child("saveStatePath").removeValue()
+                    dbRef.child("saveStatePath").push().setValue(dbEntry)
+                }
+                .setNegativeButton("Dismiss") { dialog, which ->
+                }
+                .show()
         }
 
         val valueEventListener = object: ValueEventListener{
@@ -94,10 +129,6 @@ class MainFragment : Fragment() {
                             }
                             viewModel.updateMultAndCountAfterSave(multiplication, kushCount)
                             dbIndex++
-                        }
-
-                        for(i in dbCount downTo dbIndex){
-
                         }
                     }
                 }

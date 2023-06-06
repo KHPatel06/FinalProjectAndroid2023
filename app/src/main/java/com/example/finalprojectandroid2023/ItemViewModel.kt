@@ -19,8 +19,8 @@ class ItemViewModel: ViewModel() {
         Item(4.0, MutableLiveData(0), "Wizard", "He'll give you more Kush with his magic and whatnot", MutableLiveData(20000.0)),
         Item(4.5, MutableLiveData(0), "Kush Inc", "A corporate machine that massively increases your Kush income", MutableLiveData(25000.0)),
         Item(5.0, MutableLiveData(0), "Magic TI-84 plus ", "Does the math and gives you clicks once you press enter",MutableLiveData(28000.0)),
-        Item(5.5, MutableLiveData(0), "Time Machine", "Go back in time and get Kush's before they were even born", MutableLiveData(31000.0)),
-        Item(10.0, MutableLiveData(0), "Kush Empire ", "Rule the world with the insane click power this gives you", MutableLiveData(1000000.0)),
+        Item(10.0, MutableLiveData(0), "Time Machine", "Go back in time and get Kush's before they were even born", MutableLiveData(31000.0)),
+        Item(1000.0, MutableLiveData(0), "Kush Empire ", "Rule the world with the insane click power this gives you", MutableLiveData(1000000.0)),
     )
 
     private val _numOfKush = MutableLiveData(0.00)
