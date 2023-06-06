@@ -8,19 +8,19 @@ import kotlin.time.Duration.Companion.seconds
 
 class ItemViewModel: ViewModel() {
 
-    var items = listOf(
+    val items = listOf(
         Item(0.5, MutableLiveData(0), "Cookie", "Eating it makes you feel like clicking more Kush's", MutableLiveData(100.0)),
-        Item(1.0, MutableLiveData(0), "Ghost Energy", "You feel energized, You should click more Kush's", MutableLiveData(1000.0)),
-        Item(1.5, MutableLiveData(0), "sdgd", "Does stuff", MutableLiveData(1100.0)),
-        Item(2.0, MutableLiveData(0), "item 4", "Does stuff", MutableLiveData(2000.0)),
-        Item(2.5, MutableLiveData(0), "item 5", "Does stuff", MutableLiveData(10000.0)),
-        Item(3.0, MutableLiveData(0), "item 6", "Does stuff", MutableLiveData(15000.0)),
-        Item(3.5, MutableLiveData(0), "item 7", "Does stuff", MutableLiveData(18000.0)),
-        Item(4.0, MutableLiveData(0), "item 8", "Does stuff", MutableLiveData(20000.0)),
-        Item(4.5, MutableLiveData(0), "item 9", "Does stuff", MutableLiveData(25000.0)),
-        Item(5.0, MutableLiveData(0), "item 10", "Does stuff",MutableLiveData(28000.0)),
-        Item(5.5, MutableLiveData(0), "item 11", "Does stuff", MutableLiveData(31000.0)),
-        Item(10.0, MutableLiveData(0), "item 12", "Does stuff", MutableLiveData(1000000.0)),
+        Item(1.0, MutableLiveData(0), "Ghost Energy", "You feel energized, you should click more Kush's", MutableLiveData(1000.0)),
+        Item(1.5, MutableLiveData(0), "Gaming chair", "Just makes you better, click away", MutableLiveData(1500.0)),
+        Item(2.0, MutableLiveData(0), "Kush Farm", "Farms boost how many Kush's you make per click", MutableLiveData(2000.0)),
+        Item(2.5, MutableLiveData(0), "Motorized Mouse", "Mechanically increases the amount of Kush's you get per click", MutableLiveData(10000.0)),
+        Item(3.0, MutableLiveData(0), "Nathan", "I just felt like putting Nathan in here", MutableLiveData(15000.0)),
+        Item(3.5, MutableLiveData(0), "Kush Express Bank", "Takes your Kush's and puts interest on them over time", MutableLiveData(18000.0)),
+        Item(4.0, MutableLiveData(0), "Wizard", "He'll give you more Kush with his magic and whatnot", MutableLiveData(20000.0)),
+        Item(4.5, MutableLiveData(0), "Kush Inc", "A corporate machine that massively increases your Kush income", MutableLiveData(25000.0)),
+        Item(5.0, MutableLiveData(0), "Magic TI-84 plus ", "Does the math and gives you clicks once you press enter",MutableLiveData(28000.0)),
+        Item(5.5, MutableLiveData(0), "Time Machine", "Go back in time and get Kush's before they were even born", MutableLiveData(31000.0)),
+        Item(10.0, MutableLiveData(0), "Kush Empire ", "Rule the world with the insane click power this gives you", MutableLiveData(1000000.0)),
     )
 
     private val _numOfKush = MutableLiveData(0.00)

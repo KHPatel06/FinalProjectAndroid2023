@@ -11,7 +11,8 @@
     <string name="confirm_dialog">Confirm?</string>
     <string name="toast_sale_denied">You can\'t sell more than you have</string>
     <string name="toast_sale_accepted">Sold</string>
-    <string name="about_fragment_text">Hello blank fragment</string>
+    <string name="about_fragment_text">An app made for my final project for Android Honors. Its basically just cookie clicker, but better because my face is on it.\n \n
+        Click my face and you get \"Kush\'s\" and with those you can buy items in the shop. Those can you get more Kush\'s and the cycle repeats. Have fun!</string>
     <string name="save_button">Save</string>
 
 
